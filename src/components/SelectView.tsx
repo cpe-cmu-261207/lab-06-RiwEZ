@@ -8,17 +8,16 @@ const SelectView = () => {
   let history = useHistory();
 
   const handleButton = () => {
-    const sD = startD.split("-");
-    const eD = endD.split("-");
-    
-    sD.map(item => parseInt(item));
-    eD.map(item => parseInt(item));
+    const sD = Date.parse(startD);
+    const eD = Date.parse(endD);
 
+    console.log(sD + " " + eD)
+    
     if (startD === "" || endD === "") {
       alert("Please select start date and end date correctly")
     }
     // check if start date is greater than end date
-    else if (sD[0] > eD[0] || sD[1] > eD[1] || sD[2] > eD[2]) {
+    else if (sD > eD) {
       alert("Please select start date and end date correctly")
     }
     else {
